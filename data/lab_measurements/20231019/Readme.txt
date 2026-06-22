@@ -1,0 +1,1 @@
+Falta a imagem 4 (duas inclusões de metal; em posição oposta - eletrodos 1-2 e eletrodos 9-10)

@@ -1,0 +1,1 @@
+Primeiro teste com a placa de LIRMM. Não sei a qual foto o experimento se refere
