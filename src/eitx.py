@@ -782,8 +782,8 @@ def current_method(L,l, method=1, value=1):
 
 
 def plot_tent_function(u,savefile=False, filename=''):
-  pyvista.start_xvfb()
-  
+
+
   # Ploting
   V_u = u.function_space
   grid = pyvista.UnstructuredGrid(*dolfinx.plot.vtk_mesh(V_u))
@@ -806,7 +806,7 @@ def plot_tent_function(u,savefile=False, filename=''):
 
 def plot_indicator_function(u,savefile=False, filename=''):
   # Ploting
-  pyvista.start_xvfb()
+
   u_mesh = u.function_space.mesh
   grid = pyvista.UnstructuredGrid(*dolfinx.plot.vtk_mesh(u_mesh,dim=2))
   # grid = pyvista.UnstructuredGrid(pyvista_cells, cell_types, geometry)

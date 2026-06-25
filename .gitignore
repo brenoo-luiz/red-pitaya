@@ -4,3 +4,4 @@ outputs/
 data/DATAGEN/
 .DS_Store
 *.swp
+data/synthetic_data/
