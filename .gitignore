@@ -8,3 +8,7 @@ data/synthetic_data/
 data/tfrecords/
 models/unet/checkpoints/
 models/unet/unet.keras
+outputs/training/
+*.keras
+*.tfrecords
+notebooks/.ipynb_checkpoints/
