@@ -5,3 +5,6 @@ data/DATAGEN/
 .DS_Store
 *.swp
 data/synthetic_data/
+data/tfrecords/
+models/unet/checkpoints/
+models/unet/unet.keras

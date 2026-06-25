@@ -1,0 +1,122 @@
+2024-09-25 16:26:02,541 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:26:02,541 - ERROR - Command '['python3', 'CEM_CNN_test.py', '/mnt/c/Users/Felipe/Documents/results-09-25-0/']' returned non-zero exit status 1.
+2024-09-25 16:37:50,280 - ERROR - Experiment experiment.json resulted in error
+2024-09-25 16:37:50,280 - ERROR - [Errno 2] No such file or directory: 'experiment.json'
+2024-09-25 16:38:00,922 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:38:00,922 - ERROR - [Errno 2] No such file or directory: 'experiments_settings/09-25experiment-09-25-0.json'
+2024-09-25 16:38:23,113 - ERROR - Experiment experiment.json resulted in error
+2024-09-25 16:38:23,113 - ERROR - [Errno 2] No such file or directory: 'experiment.json'
+2024-09-25 16:39:29,858 - ERROR - Experiment experiment.json resulted in error
+2024-09-25 16:39:29,858 - ERROR - [Errno 2] No such file or directory: 'experiment.json'
+2024-09-25 16:39:31,262 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:39:31,262 - ERROR - [Errno 2] No such file or directory: 'experiments_settings/09-25experiment-09-25-0.json'
+2024-09-25 16:40:02,720 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:40:02,720 - ERROR - [Errno 2] No such file or directory: 'experiments_settings/09-25experiment-09-25-0.json'
+2024-09-25 16:40:29,627 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:40:29,627 - ERROR - [Errno 2] No such file or directory: 'experiments_settings/09-25experiment-09-25-0.json'
+2024-09-25 16:42:24,228 - ERROR - Experiment experiment-09-25-0.json resulted in error
+2024-09-25 16:42:24,228 - ERROR - Command '['python3', 'CEM_CNN_test.py', '/mnt/c/Users/Felipe/Documents/results-09-25-0/']' returned non-zero exit status 1.
+2024-09-26 11:29:06,954 - ERROR - Experiment experiment-higher-mesh.json resulted in error
+2024-09-26 11:29:06,956 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_TWOCURRENT_RES_FINER", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-09-26-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 100, "save_period": 50}']' returned non-zero exit status 1.
+2024-09-26 19:01:14,762 - ERROR - Experiment experiment-higher-mesh.json resulted in error
+2024-09-26 19:01:14,764 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_TWOCURRENT_RES_FINER", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-09-26-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 100, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-02 13:05:00,399 - ERROR - Experiment experiment.json resulted in error
+2024-10-02 13:05:00,402 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_TWOCURRENT_RES_FINER", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-02/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 100, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-02 13:07:57,891 - ERROR - Experiment experiment.json resulted in error
+2024-10-02 13:07:57,891 - ERROR - Command '['python3', 'CEM_data_gen.py', '{"currents": [3, 11], "datapath": "DATAGEN_TWOCURRENT_RES_FINER", "bg": 1, "ivhigh": 10, "ivlow": 0.1, "p_ivhigh": 0.5, "p_ivlow": 0.5, "N": 128, "n_samples": [3000], "noise_level": 0.0}']' returned non-zero exit status 1.
+2024-10-02 14:47:59,836 - ERROR - Experiment experiment.json resulted in error
+2024-10-02 14:47:59,836 - ERROR - 'save_path'
+2024-10-02 22:07:14,742 - ERROR - Experiment experiment.json resulted in error
+2024-10-02 22:07:14,742 - ERROR - 'save_path'
+2024-10-03 10:23:27,257 - ERROR - Experiment 6-current.json resulted in error
+2024-10-03 10:23:27,259 - ERROR - 'save_path'
+2024-10-03 11:04:07,410 - ERROR - Experiment 3-current.json resulted in error
+2024-10-03 11:04:07,410 - ERROR - 'save_path'
+2024-10-03 11:48:56,382 - ERROR - Experiment 4-current.json resulted in error
+2024-10-03 11:48:56,384 - ERROR - 'save_path'
+2024-10-03 12:45:09,359 - ERROR - Experiment 7-current.json resulted in error
+2024-10-03 12:45:09,359 - ERROR - 'save_path'
+2024-10-03 13:34:14,460 - ERROR - Experiment 5-current.json resulted in error
+2024-10-03 13:34:14,461 - ERROR - 'save_path'
+2024-10-04 01:18:15,020 - ERROR - Experiment 3-current.json resulted in error
+2024-10-04 01:18:15,021 - ERROR - 'save_path'
+2024-10-04 01:46:26,099 - ERROR - Experiment 2-current.json resulted in error
+2024-10-04 01:46:26,099 - ERROR - 'save_path'
+2024-10-04 19:05:51,518 - ERROR - Experiment 2-current.json resulted in error
+2024-10-04 19:05:51,518 - ERROR - 'save_path'
+2024-10-04 20:29:07,164 - ERROR - Experiment 2-currentdatagen.json resulted in error
+2024-10-04 20:29:07,164 - ERROR - 'save_path'
+2024-10-05 05:52:52,643 - ERROR - Experiment 3-current.json resulted in error
+2024-10-05 05:52:52,645 - ERROR - 'save_path'
+2024-10-05 09:24:37,495 - ERROR - Experiment 5-current.json resulted in error
+2024-10-05 09:24:37,495 - ERROR - 'save_path'
+2024-10-08 16:46:30,551 - ERROR - Experiment 2-current.json resulted in error
+2024-10-08 16:46:30,553 - ERROR - 'save_path'
+2024-10-08 18:33:31,905 - ERROR - Experiment 2-currentdatagen.json resulted in error
+2024-10-08 18:33:31,905 - ERROR - 'save_path'
+2024-10-10 17:45:19,601 - ERROR - Experiment 1-current-0.json resulted in error
+2024-10-10 17:45:19,603 - ERROR - 'save_path'
+2024-10-10 18:43:56,002 - ERROR - Experiment 1-current-1.json resulted in error
+2024-10-10 18:43:56,002 - ERROR - 'save_path'
+2024-10-10 20:02:20,031 - ERROR - Experiment 1-current-2.json resulted in error
+2024-10-10 20:02:20,031 - ERROR - 'save_path'
+2024-10-10 21:39:29,472 - ERROR - Experiment 1-current-3.json resulted in error
+2024-10-10 21:39:29,472 - ERROR - 'save_path'
+2024-10-10 23:26:06,300 - ERROR - Experiment 2-currentdatagen.json resulted in error
+2024-10-10 23:26:06,302 - ERROR - 'save_path'
+2024-10-11 04:52:58,605 - ERROR - Experiment 5-current.json resulted in error
+2024-10-11 04:52:58,605 - ERROR - 'save_path'
+2024-10-11 06:37:19,149 - ERROR - Experiment 5-currentdatagen.json resulted in error
+2024-10-11 06:37:19,150 - ERROR - 'save_path'
+2024-10-12 00:31:00,349 - ERROR - Experiment 1-current.json resulted in error
+2024-10-12 00:31:00,350 - ERROR - 'save_path'
+2024-10-12 05:01:18,975 - ERROR - Experiment 1-currentdatagen.json resulted in error
+2024-10-12 05:01:18,975 - ERROR - 'save_path'
+2024-10-12 12:34:08,518 - ERROR - Experiment 2-current.json resulted in error
+2024-10-12 12:34:08,520 - ERROR - 'save_path'
+2024-10-12 18:30:19,805 - ERROR - Experiment 5-current.json resulted in error
+2024-10-12 18:30:19,805 - ERROR - 'save_path'
+2024-10-12 22:26:05,441 - ERROR - Experiment 5-currentdatagen.json resulted in error
+2024-10-12 22:26:05,441 - ERROR - 'save_path'
+2024-10-15 20:22:58,484 - ERROR - Experiment dropout-03.json resulted in error
+2024-10-15 20:22:58,484 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_1CURRENT_RES", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-15-10-1current-dropout03/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": "full", "epochs": 150, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-16 22:50:38,922 - ERROR - Experiment dropout-03.json resulted in error
+2024-10-16 22:50:38,922 - ERROR - 'save_path'
+2024-10-17 05:00:50,862 - ERROR - Experiment dropout-05.json resulted in error
+2024-10-17 05:00:50,862 - ERROR - 'save_path'
+2024-10-17 10:56:40,013 - ERROR - Experiment dropout-07.json resulted in error
+2024-10-17 10:56:40,013 - ERROR - 'save_path'
+2024-10-17 12:48:17,477 - ERROR - Experiment dropout-08.json resulted in error
+2024-10-17 12:48:17,477 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_1CURRENT_RES", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-15-10-1current-dropout08/", "split_percentage": 0.9, "dropout_prob": 0.8, "batch_size": 32, "steps_per_epoch": "full", "epochs": 150, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-17 18:45:50,658 - ERROR - Experiment experiment.json resulted in error
+2024-10-17 18:45:50,659 - ERROR - 'save_path'
+2024-10-18 08:43:12,263 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 08:43:12,264 - ERROR - 'save_path'
+2024-10-18 09:13:04,962 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 09:13:04,962 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_ONECURRENT_RES_RUIDO_001", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-18-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 20, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-18 12:41:43,530 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 12:41:43,531 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_ONECURRENT_RES_RUIDO_001", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-18-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 20, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-18 12:43:53,792 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 12:43:53,792 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_ONECURRENT_RES_RUIDO_001", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-18-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 20, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-18 12:45:00,798 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 12:45:00,798 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_ONECURRENT_RES_RUIDO_001", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-18-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 20, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-18 12:48:47,251 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 12:48:47,251 - ERROR - Command '['python3', 'UNET_train.py', '{"datapath": "DATAGEN_ONECURRENT_RES_RUIDO_001", "tfrecordpath": "data", "savepath": "/mnt/c/Users/Felipe/Documents/results-10-18-1/", "split_percentage": 0.9, "dropout_prob": 0.3, "batch_size": 32, "steps_per_epoch": 50, "epochs": 20, "save_period": 50}']' returned non-zero exit status 1.
+2024-10-18 13:08:01,973 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 13:08:01,973 - ERROR - 'save_path'
+2024-10-18 18:24:15,198 - ERROR - Experiment experiment.json resulted in error
+2024-10-18 18:24:15,198 - ERROR - 'save_path'
+2024-10-18 23:14:56,371 - ERROR - Experiment experiment1.json resulted in error
+2024-10-18 23:14:56,372 - ERROR - 'save_path'
+2024-10-19 04:00:14,909 - ERROR - Experiment experiment2.json resulted in error
+2024-10-19 04:00:14,909 - ERROR - 'save_path'
+2024-10-19 22:21:46,321 - ERROR - Experiment experiment.json resulted in error
+2024-10-19 22:21:46,324 - ERROR - 'save_path'
+2024-10-21 23:30:02,331 - ERROR - Experiment experiment.json resulted in error
+2024-10-21 23:30:02,334 - ERROR - 'save_path'
+2024-10-22 13:18:47,837 - ERROR - Experiment experiment.json resulted in error
+2024-10-22 13:18:47,837 - ERROR - Command '['python3', 'CEM_data_gen.py', '{"currents": [2, 5, 7, 10, 12, 15], "datapath": "DATAGEN_SIXCURRENT_2", "bg": 1, "ivhigh": 10, "ivlow": 0.1, "p_ivhigh": 0.5, "p_ivlow": 0.5, "N": 128, "n_samples": [1000, 2000, 3000], "noise_level": 0.0}']' returned non-zero exit status 1.
+2024-10-23 03:49:57,789 - ERROR - Experiment experiment.json resulted in error
+2024-10-23 03:49:57,791 - ERROR - 'save_path'
+2024-10-25 00:23:55,369 - ERROR - Experiment experiment.json resulted in error
+2024-10-25 00:23:55,372 - ERROR - 'save_path'
