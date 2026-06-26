@@ -344,4 +344,3 @@ dependencies:
       - threadpoolctl==3.6.0
       - traitlets==5.15.1
       - wcwidth==0.8.1
-prefix: /home/breno/Downloads/Model-Config/miniforge3/envs/fenicsx-env
