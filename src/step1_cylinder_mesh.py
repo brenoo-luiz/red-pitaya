@@ -1,15 +1,3 @@
-"""
-Step 1 — 3D Continuous Model: Generate and plot a cylinder mesh.
-No electrodes yet. This is the simplest starting point for 3D EIT.
-
-Cylinder parameters:
-    - Center: (0, 0, 0)
-    - Radius: 1
-    - Height: 2 (from z=-1 to z=1)
-
-Mesh: P1 geometry (tetrahedra), P2 function space used in step2.
-"""
-
 import gmsh
 import dolfinx
 import pyvista
@@ -20,7 +8,7 @@ import os
 
 os.makedirs("outputs", exist_ok=True)
 
-# ── 1. Generate cylinder mesh with Gmsh ───────────────────────────────────────
+# Generate cylinder mesh with Gmsh
 gmsh.finalize()
 gmsh.initialize()
 
@@ -52,7 +40,7 @@ gmsh.model.mesh.generate(3)
 gmsh.model.mesh.optimize("Netgen")
 gmsh.model.mesh.optimize("Relocate3D")
 
-# ── 2. Convert to DOLFINx ─────────────────────────────────────────────────────
+# Convert to DOLFINx
 mesh_comm = MPI.COMM_WORLD
 mesh_data = gmshio.model_to_mesh(gmsh.model, mesh_comm, 0, gdim=3)
 mesh = mesh_data.mesh
@@ -63,7 +51,7 @@ print(f"Mesh OK:")
 print(f"  Cells (tetrahedra): {mesh.topology.index_map(3).size_global}")
 print(f"  Vertices:           {mesh.topology.index_map(0).size_global}")
 
-# ── 3. Plot and save ──────────────────────────────────────────────────────────
+# Plot and save
 topology, cell_types, geometry = dolfinx.plot.vtk_mesh(mesh, mesh.topology.dim)
 grid = pyvista.UnstructuredGrid(topology, cell_types, geometry)
 
@@ -72,7 +60,6 @@ surface = grid.extract_surface(algorithm="dataset_surface")
 
 plotter = pyvista.Plotter(off_screen=True)
 
-# Solid and opaque — like the forum image
 plotter.add_mesh(
     surface,
     show_edges=True,
@@ -84,7 +71,6 @@ plotter.add_mesh(
     smooth_shading=True,
 )
 
-# Dark background like the forum
 plotter.set_background("#3a3a5c")
 
 plotter.add_axes()

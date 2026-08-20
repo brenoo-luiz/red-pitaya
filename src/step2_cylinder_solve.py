@@ -1,7 +1,3 @@
-"""
-Step 2 — 3D Continuous Model: Solve the EIT continuous problem on a cylinder.
-"""
-
 import gmsh
 import dolfinx
 import dolfinx.fem.petsc
@@ -23,7 +19,7 @@ BG     = "#1e1e2e"
 PANEL  = "#2a2a4a"
 BORDER = "#4a4a6a"
 
-# ── 1. Mesh ───────────────────────────────────────────────────────────────────
+# Mesh
 print("Generating mesh...")
 gmsh.finalize()
 gmsh.initialize()
@@ -52,36 +48,48 @@ mesh_data = gmshio.model_to_mesh(gmsh.model, mesh_comm, 0, gdim=3)
 mesh      = mesh_data.mesh
 gmsh.finalize()
 
-n_cells = mesh.topology.index_map(3).size_global
-n_verts = mesh.topology.index_map(0).size_global
+n_cells  = mesh.topology.index_map(3).size_global
+n_verts  = mesh.topology.index_map(0).size_global
 print(f"  Cells: {n_cells}  Vertices: {n_verts}")
 
-# ── 2. Function space P2 ──────────────────────────────────────────────────────
-Ve    = basix.ufl.element('Lagrange', 'tetrahedron', degree=2, shape=())
-V     = dolfinx.fem.functionspace(mesh, Ve)
+# Function space P2
+Ve     = basix.ufl.element('Lagrange', 'tetrahedron', degree=2, shape=())
+V      = dolfinx.fem.functionspace(mesh, Ve)
 n_dofs = V.dofmap.index_map.size_global
 print(f"  DOFs: {n_dofs}")
 
-# ── 3. Forms ──────────────────────────────────────────────────────────────────
-ds  = ufl.Measure("ds", domain=mesh)
-x   = ufl.SpatialCoordinate(mesh)
-g   = x[0] + x[1] + 3*x[2]
-eps = 1e-10
-u   = ufl.TrialFunction(V)
-v   = ufl.TestFunction(V)
-a   = ufl.inner(ufl.grad(u), ufl.grad(v)) * ufl.dx + eps * ufl.inner(u, v) * ufl.dx
-L   = g * v * ds
+# Forms
+ds = ufl.Measure("ds", domain=mesh)
+x  = ufl.SpatialCoordinate(mesh)
+g  = x[0] + x[1] + 3*x[2]
 
-# ── 4. Solve ──────────────────────────────────────────────────────────────────
-print("Solving...")
+u  = ufl.TrialFunction(V)
+v  = ufl.TestFunction(V)
+
+# No eps term
+a  = ufl.inner(ufl.grad(u), ufl.grad(v)) * ufl.dx
+L  = g * v * ds
+
+# Assemble
 a_form = dolfinx.fem.form(a)
 L_form = dolfinx.fem.form(L)
 
 A = dolfinx.fem.petsc.assemble_matrix(a_form)
 A.assemble()
+
+# Null space (correct way to handle pure Neumann uniqueness)
+ns_vec = A.createVecLeft()
+ns_vec.set(1.0)
+ns_vec.normalize()
+ns = PETSc.NullSpace().create(vectors=[ns_vec], comm=mesh_comm)
+A.setNullSpace(ns)
+A.setTransposeNullSpace(ns)
+
 b = dolfinx.fem.petsc.assemble_vector(L_form)
 b.ghostUpdate(addv=PETSc.InsertMode.ADD, mode=PETSc.ScatterMode.REVERSE)
+ns.remove(b)
 
+# Solve (CG + HYPRE)
 solver = PETSc.KSP().create(mesh_comm)
 solver.setOperators(A)
 solver.setType(PETSc.KSP.Type.CG)
@@ -92,14 +100,13 @@ solver.setFromOptions()
 u_h = dolfinx.fem.Function(V)
 solver.solve(b, u_h.x.petsc_vec)
 u_h.x.scatter_forward()
-u_h.x.array[:] -= u_h.x.array.mean()
-u_h.x.scatter_forward()
 
 u_min = float(u_h.x.array.min())
 u_max = float(u_h.x.array.max())
-print(f"  Converged in {solver.getIterationNumber()} iters | u: [{u_min:.3f}, {u_max:.3f}]")
+print(f"  Converged in {solver.getIterationNumber()} iters")
+print(f"  u min: {u_min:.4f}  max: {u_max:.4f}")
 
-# ── 5. PyVista grid ───────────────────────────────────────────────────────────
+# PyVista grid
 topology, cell_types, geometry = dolfinx.plot.vtk_mesh(V)
 grid    = pyvista.UnstructuredGrid(topology, cell_types, geometry)
 grid["u"] = u_h.x.array.real
@@ -112,8 +119,7 @@ sargs = dict(
     width=0.40, height=0.05,
 )
 
-# ── 6. Render cylinder + barra de cores PyVista ───────────────────────────────
-print("Rendering cylinder...")
+# Render cylinder
 p1 = pyvista.Plotter(off_screen=True, window_size=(900, 900))
 p1.add_mesh(surface, scalars="u", cmap="turbo", clim=clim,
             show_edges=False, lighting=True, smooth_shading=True,
@@ -123,8 +129,7 @@ p1.view_isometric()
 p1.screenshot("outputs/_tmp_cyl.png")
 p1.close()
 
-# ── 7. Render cross-sections (sem barra — já tem no cilindro) ─────────────────
-print("Rendering cross-sections...")
+# Render cross-sections
 p2 = pyvista.Plotter(off_screen=True, window_size=(900, 900))
 for z_val in [-0.5, 0.0, 0.5]:
     slab = grid.clip(normal="z",  origin=(0, 0, z_val + 0.01))
@@ -137,23 +142,19 @@ p2.view_isometric()
 p2.screenshot("outputs/_tmp_sec.png")
 p2.close()
 
-# ── 8. Compose: formula panel + duas imagens ──────────────────────────────────
-print("Composing...")
+# Compose
 img_cyl = np.array(Image.open("outputs/_tmp_cyl.png"))
 img_sec = np.array(Image.open("outputs/_tmp_sec.png"))
 
 fig = plt.figure(figsize=(20, 14), facecolor=BG)
 gs  = gridspec.GridSpec(
-    2, 2,
-    figure=fig,
+    2, 2, figure=fig,
     height_ratios=[0.22, 1],
-    hspace=0.04,
-    wspace=0.03,
+    hspace=0.01, wspace=0.03,
     left=0.02, right=0.98,
     top=0.98, bottom=0.01,
 )
 
-# ── Formula panel ─────────────────────────────────────────────────────────────
 ax_f = fig.add_subplot(gs[0, :])
 ax_f.set_facecolor(PANEL)
 ax_f.set_xlim(0, 1)
@@ -166,27 +167,26 @@ for spine in ax_f.spines.values():
 
 formulas = [
     (0.04,  r"$\nabla \cdot (\gamma\, \nabla u) = 0$",
-             r"PDE in $\Omega$"),
+                r"PDE in $\Omega$"),
     (0.27,  r"$\gamma\, \dfrac{\partial u}{\partial n} = g$",
-             r"Neumann BC on $\partial\Omega$"),
+                r"Neumann BC on $\partial\Omega$"),
     (0.53,  r"$\gamma = 1\,,\quad g\,(x,y,z) = x + y + 3z$",
-             "Parameters"),
+                "Parameters"),
     (0.77,  r"$\int_\Omega \nabla u\cdot\nabla v\,dx = \int_{\partial\Omega} g\,v\,ds$",
-             "Variational form"),
+                "Variational form"),
 ]
 
 for xpos, formula, label in formulas:
     ax_f.text(xpos, 0.65, formula, ha="left", va="center",
-              fontsize=16, color="#cce0ff",
-              transform=ax_f.transAxes, fontfamily="serif")
+                fontsize=16, color="#cce0ff",
+                transform=ax_f.transAxes, fontfamily="serif")
     ax_f.text(xpos, 0.18, label, ha="left", va="center",
-              fontsize=13, color="#8888aa",
-              transform=ax_f.transAxes)
+                fontsize=13, color="#8888aa",
+                transform=ax_f.transAxes)
 
 for xd in [0.24, 0.50, 0.74]:
     ax_f.axvline(xd, ymin=0.08, ymax=0.92, color=BORDER, linewidth=1.0)
 
-# ── Imagens ───────────────────────────────────────────────────────────────────
 ax_cyl = fig.add_subplot(gs[1, 0])
 ax_cyl.imshow(img_cyl)
 ax_cyl.axis("off")
@@ -203,5 +203,10 @@ plt.close()
 
 os.remove("outputs/_tmp_cyl.png")
 os.remove("outputs/_tmp_sec.png")
+
+A.destroy()
+b.destroy()
+ns_vec.destroy()
+solver.destroy()
 
 print("Saved: outputs/step2_cylinder_solution.png")
